@@ -13,6 +13,16 @@ reject or accept them. In addition, the contractors can review the already sent 
 ### Registering. 
 For contractors to register, the following API endpoint is provided:
 
- | 
-----|------
-Method | post
+#### API
+/contractors/signup
+#### Method(s)
+POST
+#### Data to be provided
+first_name - The first name of the contractor
+last_name - The last name of the contractor
+email - The email of the contractor
+password - The password of the contractor
+location - The location of the contractor usually in coordinates (x, y)
+
+#### Behavior of the endpoint
+
