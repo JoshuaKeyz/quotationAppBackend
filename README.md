@@ -18,6 +18,8 @@ For contractors to register, the following API endpoint is provided:
 #### Method(s)
 POST
 #### Data to be provided
+The server accepts the values below. 
+___
 - first_name - The first name of the contractor
 - last_name - The last name of the contractor
 - email - The email of the contractor
