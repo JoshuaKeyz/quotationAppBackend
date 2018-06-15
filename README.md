@@ -6,3 +6,9 @@
 The contractors have the possiblity to send quotes to registered consumers who can either
 reject or accept them. In addition, the contractors can review the already sent quotes.
 
+___
+```javascript
+function writeAllTheWikis(){
+    console.log("Let's do this");
+}
+```
