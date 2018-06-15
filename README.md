@@ -13,6 +13,6 @@ reject or accept them. In addition, the contractors can review the already sent 
 ### Registering. 
 For contractors to register, the following API endpoint is provided:
 
-Key | Value
+ | 
 ----|------
 Method | post
