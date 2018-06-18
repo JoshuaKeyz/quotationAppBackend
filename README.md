@@ -19,10 +19,6 @@ For contractors to register, the following API endpoint is provided:
 POST
 #### Data to be provided
 The server accepts the values below. 
-<<<<<<< HEAD
-=======
-___
->>>>>>> 51bd4d8fe3e3d67ef10c4f8eca062f4858c029fd
 - first_name - The first name of the contractor
 - last_name - The last name of the contractor
 - email - The email of the contractor
@@ -30,12 +26,8 @@ ___
 - location - The location of the contractor usually in coordinates (x, y)
 
 #### Behavior of the endpoint
-<<<<<<< HEAD
 - if first_name, last_name, email and password and location are not provided, or one of the items are missing from the set, 
 then, an error is returned with the message: 
  ```javascript
  {error: "insufficient values provided"}
  ```
-=======
-
->>>>>>> 51bd4d8fe3e3d67ef10c4f8eca062f4858c029fd
