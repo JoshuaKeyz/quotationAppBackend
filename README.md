@@ -27,7 +27,4 @@ The server accepts the values below.
 
 #### Behavior of the endpoint
 - if first_name, last_name, email and password and location are not provided, or one of the items are missing from the set, 
-then, an error is returned with the message: 
- ```javascript
- {error: "insufficient values provided"}
- ```
+then, an error is returned with the message:  {error: "insufficient values provided"}
