@@ -1,18 +1,18 @@
 let emailValidator = require("../helpers/email_validator")
 let sufficiencyValidator = require("../helpers/sufficiency_validator");
-let Contractor = require("../models/Contractor")
+let Consumer = require("../models/Consumer")
 
 module.exports = (req, res)=>{
     if(sufficiencyValidator(req.body)){
         if(emailValidator(req.body.email)){
-            new Contractor({email: req.body.email})
+            new Consumer({email: req.body.email})
             .fetch()
             .then(function(model){
                 if(model){
                     res.jsonp({error: "email already registered"})
                 }else{
                     var obj = req.body
-                    new Contractor({
+                    new Consumer({
                         id: obj.id,
                         first_name: obj.first_name, 
                         last_name: obj.last_name,
