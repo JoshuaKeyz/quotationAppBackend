@@ -253,8 +253,16 @@ The consumer has the possiblility to see all quotes assigned to him/her as well 
 
 
 ### Expiration of quotes in 5 minutes
-    If i were to implement the expiration of quotes in 5 minutes, I would create two web services on my docker stack of services, that accepts REST requests from this current REST API on different ports. One of them would be responsible for checking for expired quotes and the other for deletion of the expired quotes.
+    If i were to implement the expiration of quotes in 5 minutes, I would create two web services
+    on my docker stack of services, that accepts REST requests from this current REST API on different 
+    ports. One of them would be responsible for checking for expired quotes and the other for deletion 
+    of the expired quotes.
 
-    So as every new quotes are made, a before a final response is made, a request will be made to the first web service to start monitoring the time difference, which typically queues the monitored records stored in an array. 
+    So as every new quotes are made, a before a final response is made, a request will be made to the first 
+    web service to start monitoring the time difference, which typically queues the monitored records stored 
+    in an array. 
 
-    The REST service could every 30 second, iterate through all quotations with the status field of "pending" (as I built all the quotes to have a "status" field in the database) and if the time of their creation is compared to the current time, and the difference is more than 5 minutes, it will send the quote id to the other web service, which will queue all of these to be deleted as soon as possible. 
+    The REST service could every 30 second, iterate through all quotations with the status field of "pending"
+    (as I built all the quotes to have a "status" field in the database) and if the time of their creation is 
+    compared to the current time, and the difference is more than 5 minutes, it will send the quote id to the 
+    other web service, which will queue all of these to be deleted as soon as possible. 
