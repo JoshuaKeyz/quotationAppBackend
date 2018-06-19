@@ -138,9 +138,9 @@ Consumers|
 ```javascript
     {error: 'not signedIn'}
 ```
--   When the user rejects a quote by passing "reject" to the action slot of the request, the entire model is returned with the **status** field set to "accepted"
+-   When the user rejects a quote by passing "reject" to the action slot of the request, the entire model is returned with the **status** field set to "rejected"
 
--   When the user accepts a quote by passing "accept" to the action slot of the request, the entire model is returned with the **status** field set to "rejected"
+-   When the user accepts a quote by passing "accept" to the action slot of the request, the entire model is returned with the **status** field set to "accepted"
 
 -   If the quote has already been accepted, the below error is thrown.
 ```javascript
