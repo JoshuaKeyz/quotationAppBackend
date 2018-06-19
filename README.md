@@ -11,6 +11,7 @@
     -   [Getting Quotes by both consumers and contractors](#getting-quotes-by-both-consumers-and-contrators)
     -   [Handling Quotes by consumers](#handling-quotes-by-consumers)
     -   [Reviewing of the Quotes by the contractors](#reviewing-of-the-quotes-by-the-contractors)
+    
 -   [Expiration of quotes in 5 minutes](#expiration-of-quotes-in-5-minutes)
 
 ## Summary of the project
@@ -124,7 +125,7 @@ The server accepts the values below for sending a quote
     {error: "invalid quotation"}
 ```
 ### Getting Quotes by both consumers and contractors
-The consumer has the means to see all the quotes that has been sent from the consumer to him/her using the following API.
+The consumer has the means to see all the quotes that has been sent from the consumer to him/her using the following API. They both have the possiblity to see the distance between themselves, expecially the consumer, who needs to see how far the contractor is before accepting a quote.
 
 #### API
 Consumers | Contractors
@@ -246,6 +247,10 @@ Contractors|
 ```javascript
     {error: 'unregistered contractor'}
 ```
+
+### Getting a list of quotations made to a consumer
+The consumer has the possiblility to see all quotes assigned to him/her as well as the contractor email and the distance between the consumer himself and the contractor, before accepting a quotation, using the following API:
+
 
 ### Expiration of quotes in 5 minutes
     If i were to implement the expiration of quotes in 5 minutes, I would create two web services on my docker stack of services, that accepts REST requests from this current REST API on different ports. One of them would be responsible for checking for expired quotes and the other for deletion of the expired quotes.
