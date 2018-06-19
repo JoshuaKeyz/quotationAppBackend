@@ -2,8 +2,9 @@
 
 ## Contents
 -   [Installation](#installation)
+-   [Testing the REST API](#test-the-rest-api)
 -   [Core API](#core-api)
--   [Testing the REST API](#)
+
 ### Summary of the project
  
 It was required to build a REST API in which contractors and consumers can register and sign in. 
@@ -11,7 +12,17 @@ The contractors have the possiblity to send quotes to registered consumers who c
 reject or accept them. In addition, the contractors can review the already sent quotes.
 
 ### Installation
+To Install this program:
+1.  Clone this repository (git clone git@github.com:JoshuaKeyz/updatedVersion.git jobtest)
+2.  Enter the directory of the application (cd jobtest)
+3.  Run the command to initialize Docker (docker-compose build)
+4.  Deploy the Application by running these two commands in tandem (docker swarm init && docker stack deploy -c docker-compose.yml jobTest)
 
+### Test the REST API
+To run the test of the features of the application (after installation), open a terminal and enter the following command:
+    npm run test
+
+### Core API
 ### Registering. 
 1. For contractors to register, the following API endpoint is provided:
 

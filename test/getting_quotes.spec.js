@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const server = require("../app");
@@ -5,6 +7,7 @@ let should = require("chai").should;
 let expect = require("chai").expect;
 let knex = require("../db/knex");
 chai.use(chaiHttp);
+
 
 describe("Consumers gets quotes", ()=>{
 	beforeEach((done)=>{
