@@ -38,7 +38,7 @@ The server accepts the values below.
 - last_name - The last name of the contractor
 - email - The email of the contractor
 - password - The password of the contractor
-- location - The location of the contractor usually in coordinates (x, y)
+- location - The location of the contractor usually in coordinates (x, y) (which may represent latitude and longitude) :) 
 
 #### Behavior of the endpoint and errors
 - if first_name, last_name, email and password and location are not provided, or one of the items are missing from the set, 
