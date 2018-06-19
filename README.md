@@ -5,6 +5,12 @@
 -   [Installation](#installation)
 -   [Testing the REST API](#test-the-rest-api)
 -   [Core API](#core-api)
+    -   [Registering](#registering)
+    -   [Signing In](#signing-in)
+    -   [Sending Quotes](#sending-quotes)
+    -   [Getting Quotes by both consumers and contractors](#getting-quotes-by-both-consumers-and-contrators)
+    -   [Handling Quotes by consumers](#handling-quotes-by-consumers)
+    -   [Reviewing of the Quotes by the contractors](#reviewing-of-quotes-by-the-contractors)
 
 ## Summary of the project
  
@@ -202,7 +208,7 @@ Consumers|
     {error: "invalid request"}
 ```
 
-### Reviewing of the Quotes by the contracors
+### Reviewing of the Quotes by the contractors
 The contractor has the means to review the quotes sent to Him/Her, by updating some of the quote items prices, by the following API endpoint.
 
 #### API
