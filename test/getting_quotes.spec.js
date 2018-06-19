@@ -6,7 +6,7 @@ let expect = require("chai").expect;
 let knex = require("../db/knex");
 chai.use(chaiHttp);
 
-describe("Getting quotes", ()=>{
+describe("Consumers gets quotes", ()=>{
 	beforeEach((done)=>{
 		knex.migrate.rollback()
 			.then(function(){
@@ -45,7 +45,60 @@ describe("Getting quotes", ()=>{
 		.then(function(res){
             expect(res).to.have.cookie('sessionid');
             let Cookies = res.headers['set-cookie']
-            return agent.get('/consumers/quotes?consumer_id')
+            return agent.get('/consumers/quotes?consumer_id=1')
+            .set('Cookie', Cookies)
+            .then(function(res){
+                res.should.be.json;
+                res.body[0].should.have.property("id");
+                res.body[0].should.have.property("contractor_email");
+                res.body[0].should.have.property("quote_for");
+                /*res.body.status.should.equal("success")*/
+                done();
+            })
+        })
+    })
+})
+
+describe("Contractors gets quotes", ()=>{
+	beforeEach((done)=>{
+		knex.migrate.rollback()
+			.then(function(){
+				knex.migrate.latest()
+					.then(function(){
+						return knex.seed.run()
+							.then(function(){
+								done();
+							});
+					});
+			});
+	});
+
+	afterEach((done)=>{
+		knex.migrate.rollback()
+			.then(function(){
+				done();
+			});
+    });
+    it("If the user is not loggedIn, return {error: 'not signedIn'}", (done)=>{
+        chai.request(server)
+        .get("/contractors/quotes")
+        .end(function(err, res){
+            res.body.should.have.property("error");
+            res.body.error.should.equal("not signedIn")
+            done();
+        })
+    })
+    it("if the user is logged in, return {status: 'success'}", (done)=>{
+        let agent = chai.request.agent(server);
+		agent.post("/contractors/signin")
+		.send({
+            email:"liver.johnson@example.com", 
+				password: "example"
+		})
+		.then(function(res){
+            expect(res).to.have.cookie('sessionid');
+            let Cookies = res.headers['set-cookie']
+            return agent.get('/contractors/quotes?contractor_id=1')
             .set('Cookie', Cookies)
             .then(function(res){
                 res.should.be.json;

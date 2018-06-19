@@ -55,7 +55,6 @@ describe("Consumer Handling of quotes", ()=>{
 			})
 			.then(function(res){
 				res.should.be.json;
-				console.log(res.body);
 				done();
 			})
 			
@@ -81,7 +80,6 @@ describe("Consumer Handling of quotes", ()=>{
 			})
 			.then(function(res){
 				res.should.be.json;
-				console.log(res.body);
 				done();
 			})
 		})

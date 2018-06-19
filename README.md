@@ -61,5 +61,5 @@ To sign in, for both contractors and consumers, the session variable "isLoggedIn
 #### API
 Consumers | Contractors
 ----------|------------
-consumers/signin | contractors/signin
+/consumers/signin | /contractors/signin
 
