@@ -129,4 +129,50 @@ Consumers|
 **PUT**
 
 #### Required Data for this endpoint
+-   consumer_id: This must be passed as a query string to the endpoint. The consumer_id is always present as a session variable (req.session.consumer_id) when the consumer is signed in.
+-   quote_id: The value of the id of the quotation.
+-   action: the action to be performed by the consumer. This can only be two values which are **accept** and **reject**
 
+#### Behaviour of the endpoint and errors (unit tests not complete)
+-   If the user is not signed in when he wants to handle a quote for some reasons, the following error is returned
+```javascript
+    {error: 'not signedIn'}
+```
+-   When the user rejects a quote by passing "reject" to the action slot of the request, the entire model is returned with the **status** field set to "accepted"
+
+-   When the user accepts a quote by passing "accept" to the action slot of the request, the entire model is returned with the **status** field set to "rejected"
+
+-   If the quote has already been accepted, the below error is thrown.
+```javascript
+    {error: "quote already accepted"}
+```
+
+-   If the quote has already been rejected, the below error is thrown.
+```javascript
+    {error: "quote already rejected"}
+```
+
+-   If the quote_id specified is not in the database record, the following error is retured
+```javascript
+    {error: "invalid quotation"}
+```
+
+-   If the action specified is neither "accept" or "reject", the error below is returned
+```javascript
+    {error: "invalid action"}
+```
+
+-   If no quote_id is specified, then the following error is retured
+```javascript
+    {error: "invalid quote"}
+```
+
+-   If the consumer_id specified in the query string is not registered, the following error is returned
+```javascript
+    {error: "unregistered user"}
+```
+
+-   If the consumer_id is not specified at all, the following error is returned
+```javascript
+    {error: "invalid request"}
+```
