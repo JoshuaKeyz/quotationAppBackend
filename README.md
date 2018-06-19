@@ -87,6 +87,9 @@ Contractors|
 -----------|
 /contractors/sendquotes |
 
+##### Method
+**POST**
+
 #### Data to be provided by contractors
 The server accepts the values below for sending a quote
 - contractor_id: The ID of the Contractor (which can be gotten from the session variable req.session.contractor_id)
@@ -113,3 +116,17 @@ The server accepts the values below for sending a quote
 ```javascript
     {error: "invalid quotation"}
 ```
+
+### Handling Quotes by consumers
+The consumer has the means to reject of accept a quote that is still pending by the following API.
+
+#### API
+Consumers|
+---------|
+/consumers/handlequotes?consumer_id=id |
+
+##### Method
+**PUT**
+
+#### Required Data for this endpoint
+
