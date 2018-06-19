@@ -4,6 +4,7 @@
 -   [Summary of the Project](#summary-of-the-project)
 -   [Installation](#installation)
 -   [Testing the REST API](#test-the-rest-api)
+-   [Checking the ESLINT code output result](#checking-the-eslint-code-output-result)
 -   [Core API](#core-api)
     -   [Registering](#registering)
     -   [Signing In](#signing-in)
@@ -29,7 +30,13 @@ To Install this program:
 
 ## Test the REST API
 To run the test of the features of the application (after installation), open a terminal and enter the following command:
-    npm run test
+
+**cd jobtest && npm run test**
+
+## Checking the ESLINT code output result
+To check the eslint output sinply run the following command in the project documentary
+
+**npm run lint**
 
 ## Core API
 ### Registering. 
@@ -236,7 +243,7 @@ Contractors|
 ```
 -   If the contractor is signed in, the following response is gotten
 ```javascript
-    {status: "success"}
+    {status: "success"} 
 ```
 -   If the quote_id specified is not recorded, the error is returned below:
 ```javascript
