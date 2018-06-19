@@ -254,9 +254,9 @@ The consumer has the possiblility to see all quotes assigned to him/her as well 
 
 ### Expiration of quotes in 5 minutes
     If i were to implement the expiration of quotes in 5 minutes, I would create two web services
-    on my docker stack of services, that accepts REST requests from this current REST API on different 
-    ports. One of them would be responsible for checking for expired quotes and the other for deletion 
-    of the expired quotes.
+    on my docker stack of services, that accepts REST requests from this current REST API, to the other two 
+    web services, running on different ports. One of them would be responsible for checking for expired 
+    quotes and the other for deletion of the expired quotes.
 
     So as every new quotes are made, a before a final response is made, a request will be made to the first 
     web service to start monitoring the time difference, which typically queues the monitored records stored 
