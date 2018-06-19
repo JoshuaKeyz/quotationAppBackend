@@ -116,6 +116,31 @@ The server accepts the values below for sending a quote
 ```javascript
     {error: "invalid quotation"}
 ```
+### Getting Quotes by both consumers and contractors
+The consumer has the means to see all the quotes that has been sent from the consumer to him/her using the following API.
+
+#### API
+Consumers | Contractors
+----------|------------
+/consumers/getquotes?consumer_id=id | /contractors/getquotes?contractor_id=id
+
+##### Method
+**GET**
+
+
+#### Required Data for this endpoint
+The only required data for these endpoints are the consumer_id and contractor_id for each of the respective endpoints, passed into the query string
+
+#### Behaviour of the endpoint and errors `
+-   If the user is not loggedIn, the following error is returned
+```javascript
+    {error: 'not signedIn'}
+```
+
+-   If the user is signed in, the following response is retured:
+```javascript
+    {status: 'success'}
+```
 
 ### Handling Quotes by consumers
 The consumer has the means to reject of accept a quote that is still pending by the following API.
@@ -175,4 +200,42 @@ Consumers|
 -   If the consumer_id is not specified at all, the following error is returned
 ```javascript
     {error: "invalid request"}
+```
+
+### Reviewing of the Quotes by the contracors
+The contractor has the means to review the quotes sent to Him/Her, by updating some of the quote items prices, by the following API endpoint.
+
+#### API
+Contractors|
+-----------|
+/contractors/quotes?contractor_id=id |
+
+##### Method
+**PUT**
+
+#### Required Data for this endpoint
+-   quote_id: The Id of the quote to be reviewed. (This may be gotten from the /contractors/getquotes?contractor_id=id end point described above)
+-   labor: The labor price
+-   expenses: The expenses price
+-   sales_task: The sales task
+-   miscellaneous: The miscellanous expenses incurred
+-   total: The total cost of everything
+
+#### Behaviour of the endpoint and errors
+-   If the contractor is not signed in, the following response is retured
+```javascript
+    {error: 'not signedin'}
+```
+-   If the contractor is signed in, the following response is gotten
+```javascript
+    {status: "success"}
+```
+-   If the quote_id specified is not recorded, the error is returned below:
+```javascript
+    {error: "this quote doesn't exist"}
+```
+
+-   If the contractor_id specified in the query string is not registered, the following error is returned
+```javascript
+    {error: 'unregistered contractor'}
 ```
