@@ -7,7 +7,7 @@ exports.up = function(knex) {
 		table.string("password").notNullable();
 		table.specificType("location", "point");
 	})
-	.then(function(){
+		.then(function(){
 			return knex.schema.createTable("contractors", function(table){
 				table.increments("id").unsigned().primary();
 				table.string("first_name").notNullable();
@@ -20,7 +20,7 @@ exports.up = function(knex) {
 		.then(function(){
 			return knex.schema.createTable("quotes", function(table){
 				table.increments("id").unsigned().primary();
-				table.string("title")
+				table.string("title");
 				table.integer("consumer_id");
 				table.integer("contractor_id");
 				table.integer("labor").notNullable();

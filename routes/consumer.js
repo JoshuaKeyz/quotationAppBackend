@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const router = express.Router();
 const consumerRegistration = require("../controllers/consumerRegistration");
 const consumerSignIn = require("../controllers/consumerSignIn");
-const handlingQuotes = require("../controllers/handlingQuotes")
-const ConsumerGetsQuotes = require("../controllers/ConsumerGetsQuotes")
+const handlingQuotes = require("../controllers/handlingQuotes");
+const ConsumerGetsQuotes = require("../controllers/ConsumerGetsQuotes");
 
 router.use(bodyParser.json());
 

@@ -5,7 +5,7 @@ const contractorRegistration = require("../controllers/contractorRegistration");
 const contractorSignIn = require("../controllers/contractorSignIn");
 const sendQuotes = require("../controllers/sendQuotes");
 const reviewingSentQuotes = require("../controllers/reviewingSentQuotes");
-const contractorGetsQuotes = require("../controllers/ConsumerGetsQuotes")
+const contractorGetsQuotes = require("../controllers/ConsumerGetsQuotes");
 
 router.use(bodyParser.json());
 

@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
 const chai = require("chai");
 const chaiHttp = require("chai-http");
@@ -27,63 +27,63 @@ describe("Consumer Handling of quotes", ()=>{
 			.then(function(){
 				done();
 			});
-    });
-    it("If the user is not loggedIn, return {error: 'not signedIn'}", (done)=>{
-        chai.request(server)
-        .put("/consumers/handlequotes")
-        .end(function(err, res){
-            res.body.should.have.property("error");
-            res.body.error.should.equal("not signedIn")
-            done();
-        })
-    })
-    it("The user should be able to reject a quote", (done)=>{
-		let agent = chai.request.agent(server)
+	});
+	it("If the user is not loggedIn, return {error: 'not signedIn'}", (done)=>{
+		chai.request(server)
+			.put("/consumers/handlequotes")
+			.end(function(err, res){
+				res.body.should.have.property("error");
+				res.body.error.should.equal("not signedIn");
+				done();
+			});
+	});
+	it("The user should be able to reject a quote", (done)=>{
+		let agent = chai.request.agent(server);
 		
 		agent.post("/consumers/signin")
-		.send({
-            email: "meg.oliver@example.com", 
-			password: "example",
-		})
-		.then(function(res){
-			expect(res).to.have.cookie("sessionid");
-			let Cookies = res.headers['set-cookie']
-
-			return agent.put("/consumers/handlequotes?consumer_id=1")
-			.set("Cookie", Cookies)
 			.send({
-				quote_id: 1, 
-				action: 'reject'
+				email: "meg.oliver@example.com", 
+				password: "example",
 			})
 			.then(function(res){
-				res.should.be.json;
-				done();
-			})
+				expect(res).to.have.cookie("sessionid");
+				let Cookies = res.headers["set-cookie"];
+
+				return agent.put("/consumers/handlequotes?consumer_id=1")
+					.set("Cookie", Cookies)
+					.send({
+						quote_id: 1, 
+						action: "reject"
+					})
+					.then(function(res){
+						res.should.be.json;
+						done();
+					});
 			
-		})
+			});
 		
-	})
+	});
 	it("The user should be able to accept a quote", (done)=>{
-		let agent = chai.request.agent(server)
+		let agent = chai.request.agent(server);
 		agent.post("/consumers/signin")
-		.send({
-            email: "meg.oliver@example.com", 
-			password: "example",
-		})
-		.then(function(res){
-			expect(res).to.have.cookie("sessionid");
-			let Cookies = res.headers['set-cookie']
-
-			return agent.put("/consumers/handlequotes?consumer_id=1")
-			.set("Cookie", Cookies)
 			.send({
-				quote_id: 1, 
-				action: 'accept'
+				email: "meg.oliver@example.com", 
+				password: "example",
 			})
 			.then(function(res){
-				res.should.be.json;
-				done();
-			})
-		})
-	})
-})
+				expect(res).to.have.cookie("sessionid");
+				let Cookies = res.headers["set-cookie"];
+
+				return agent.put("/consumers/handlequotes?consumer_id=1")
+					.set("Cookie", Cookies)
+					.send({
+						quote_id: 1, 
+						action: "accept"
+					})
+					.then(function(res){
+						res.should.be.json;
+						done();
+					});
+			});
+	});
+});
