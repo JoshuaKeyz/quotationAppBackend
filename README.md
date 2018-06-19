@@ -83,6 +83,6 @@ the API returns:
 The functionality of sending quotes is only reserved for the contractors by the usage of the following API.
 
 #### API
-Contractors|
------------|
+|Contractors|
+|-----------|
 /contractors/sendquotes |
