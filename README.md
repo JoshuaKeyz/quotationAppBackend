@@ -1,7 +1,9 @@
 # Test
 
 ## Contents
-
+-   [Installation](#installation)
+-   [Core API](#core-api)
+-   [Testing the REST API](#)
 ### Summary of the project
  
 It was required to build a REST API in which contractors and consumers can register and sign in. 
@@ -52,3 +54,12 @@ then, an error is returned with the message:  {error: "insufficient values provi
 - if the email provided is not valid for example name.outlook.com, instead of consumerinitials@outlook.com, 
 the API returns {error: "invalid email provided"}
 - if the user is already registered, then the API returns {error: "this email has already been registered"}
+
+### Signing In
+To sign in, for both contractors and consumers, the session variable "isLoggedIn = true" is created to keep the user session for a period of 25 minutes. Using the following API
+
+#### API
+Consumers | Contractors
+----------|------------
+consumers/signin | contractors/signin
+

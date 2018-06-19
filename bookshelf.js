@@ -16,4 +16,7 @@ if(process.env.NODE_ENV == "test"){
 }
 
 
-module.exports = require("bookshelf")(pg);
+const bookshelf = require("bookshelf")(pg);
+bookshelf.plugin('registry');
+
+module.exports = bookshelf
