@@ -1,9 +1,11 @@
 let Contractor = require("../models/Contractor");
 let Consumer = require("../models/Consumer");
 let Quotes = require("../models/Quotes");
+let validateQuoteFields = require("../helpers/validateQuoteFields");
 module.exports = function(req, res){
 	if(req.session.isLoggedIn){
-		new Contractor({id: req.body.contractor_id})
+		if(validateQuoteFields(req)){
+			new Contractor({id: req.body.contractor_id})
 			.fetch()
 			.then((model)=>{
 				if(model){
@@ -19,7 +21,7 @@ module.exports = function(req, res){
 									sales_task: req.body.sales_task,
 									miscellaneous: req.body.miscellaneous,
 									total: req.body.total, 
-									status: req.body.status
+									status: "pending"
 								})
 									.save(null, {method: "insert"})
 									.then(function(data_model){
@@ -33,7 +35,10 @@ module.exports = function(req, res){
 					res.jsonp({status: "Invalid contractor"});
 				}
 			});
-
+		}else{
+			res.jsonp({error: "invalid quotation"})
+		}
+		
 	}else{
 		res.jsonp({error: "not signedIn"});
 	}

@@ -17,7 +17,7 @@ To Install this program:
 1.  Clone this repository (git  clone   git@github.com:JoshuaKeyz/updatedVersion.git     jobtest)
 2.  Enter the directory of the application (cd jobtest)
 3.  Run the command to initialize Docker (docker-compose build)
-4.  Deploy the Application by running these commands (docker swarm init && docker stack deploy -c docker-compose.yml jobTest)
+4.  Deploy the Application by running these commands (docker-compose up)
 
 ## Test the REST API
 To run the test of the features of the application (after installation), open a terminal and enter the following command:
@@ -83,6 +83,33 @@ the API returns:
 The functionality of sending quotes is only reserved for the contractors by the usage of the following API.
 
 #### API
-|Contractors|
-|-----------|
+Contractors|
+-----------|
 /contractors/sendquotes |
+
+#### Data to be provided by contractors
+The server accepts the values below for sending a quote
+- contractor_id: The ID of the Contractor (which can be gotten from the session variable req.session.contractor_id)
+- consumer_id: The ID of the Consumer (which can be gotten from a list of consumers)
+- labor: The price for the cost of labor
+- expenses: The price for the expences incurred. 
+- sales_task: The cost of the task on sales
+- miscellaneous: The miscellaneous expences incurred
+- total: The total cost of the quotation
+
+#### Behaviour of the endpoint and errors
+-   If the contractor is not logged in and he wants to send a quote the following error is returned
+```javascript
+    {error: 'not signedIn'}
+```
+
+-   If the user is logged in, the contractor can send quotes and when the quotes are sent the following response is returned, where the model object is the full object containing all the entries made by the contractor like, contractor_id, consumer_id, labor, expences, sales_task and so on.
+```javascript
+    {status: "success", model: {}}
+```
+-   The API automatically appends "pending" to the status field of every new quotes
+
+-   If the contractor sends the quote without some of the [data to be provided](#data-to-be-provided-by-contractors), the following error is specified
+```javascript
+    {error: "invalid quotation"}
+```

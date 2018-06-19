@@ -59,8 +59,6 @@ describe("Sending quotes", ()=>{
 				expect(res).to.have.cookie("sessionid");
 				res.body.should.have.property("status");
 				res.body.status.should.equal("success");
-				res.body.should.have.property("signIn");
-				res.body.signIn.should.equal(true);
 				Cookies = res.headers["set-cookie"];//.pop().split(';')[0]
 				return chai.request(server)
 					.post("/contractors/sendquotes")
@@ -72,10 +70,8 @@ describe("Sending quotes", ()=>{
 						expenses: 800,
 						sales_task: 50, 
 						miscellaneous: 30,
-						total: 1580,
-						status: "pending"
+						total: 1580
 					})
-				
 					.then(function(res){
 						res.body.should.have.property("status");
 						res.body.status.should.equal("success");
@@ -87,4 +83,39 @@ describe("Sending quotes", ()=>{
 					});
 			});
 	});
+
+	it("If a quote is sent without all the required fields, return {error: 'invalid quotation'}", (done)=>{
+		let agent = chai.request.agent(server);
+		agent.post("/contractors/signIn")
+			.send({
+				email:"jean.morgan@example.com", 
+				password: "example", 
+			})
+			.then(function(res){
+				expect(res).to.have.cookie("sessionid");
+				res.body.should.have.property("status");
+				res.body.status.should.equal("success");
+				Cookies = res.headers["set-cookie"];//.pop().split(';')[0]
+				return chai.request(server)
+					.post("/contractors/sendquotes")
+					.set("Cookie", Cookies)
+					.send({
+						contractor_id: 1, 
+						consumer_id: 1, 
+						labor: 700,
+						expenses: 800,
+						sales_task: 50, 
+						//Purposefully leaving out miscellaneous
+						//miscellaneous: 30,
+						total: 1580,
+						
+					})
+				
+					.then(function(res){
+						res.body.should.have.property("error");
+						res.body.error.should.equal('invalid quotation');
+						done();
+					});
+			});
+	})
 });

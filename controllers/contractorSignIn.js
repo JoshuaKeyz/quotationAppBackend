@@ -7,7 +7,8 @@ module.exports = function(req, res){
 			.then(function(model){
 				if(model){
 					req.session.isLoggedIn = true;
-					res.jsonp({status: "success", signIn: req.session.isLoggedIn, session: req.session.cookie});
+					req.session.contractor_id = model.toJSON.id;
+					res.jsonp({status: "success", contractor_id: model.id});
 				}else{
 					res.jsonp({error: "incorrect username/password"});
 				}
