@@ -13,7 +13,7 @@ reject or accept them. In addition, the contractors can review the already sent 
 
 ### Installation
 To Install this program:
-1.  Clone this repository (git clone git@github.com:JoshuaKeyz/updatedVersion.git jobtest)
+1.  Clone this repository (git  clone   git@github.com:JoshuaKeyz/updatedVersion.git     jobtest)
 2.  Enter the directory of the application (cd jobtest)
 3.  Run the command to initialize Docker (docker-compose build)
 4.  Deploy the Application by running these two commands in tandem (docker swarm init && docker stack deploy -c docker-compose.yml jobTest)
