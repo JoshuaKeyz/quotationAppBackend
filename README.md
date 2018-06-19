@@ -10,7 +10,7 @@
     -   [Sending Quotes](#sending-quotes)
     -   [Getting Quotes by both consumers and contractors](#getting-quotes-by-both-consumers-and-contrators)
     -   [Handling Quotes by consumers](#handling-quotes-by-consumers)
-    -   [Reviewing of the Quotes by the contractors](#reviewing-of-quotes-by-the-contractors)
+    -   [Reviewing of the Quotes by the contractors](#reviewing-of-the-quotes-by-the-contractors)
 
 ## Summary of the project
  
