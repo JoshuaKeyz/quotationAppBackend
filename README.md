@@ -31,7 +31,7 @@ Consumers | Contractors
 ----------|------------
 /consumers/register | /contractors/register
 ##### HTTP Method
-POST
+**POST**
 #### Data to be provided for both consumers and contractors
 The server accepts the values below. 
 - first_name - The first name of the contractor
@@ -57,7 +57,7 @@ Consumers | Contractors
 /consumers/signin | /contractors/signin
 
 ##### HTTP Method
-POST
+**POST**
 
 #### Data to be provided for both consumers and contractors
 The server accepts the values below for signing in
@@ -80,7 +80,9 @@ the API returns:
 ```
 
 ### Sending Quotes
-The functionality of sending quotes are only reserved for the contractors by the following API.
+The functionality of sending quotes is only reserved for the contractors by the usage of the following API.
 
 #### API
-/contractors/sendquotes
+Contractors|
+-----------|
+/contractors/sendquotes |
