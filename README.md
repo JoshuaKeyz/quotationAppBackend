@@ -66,16 +66,15 @@ The server accepts the values below for signing in
 
 #### Behavior of the endpoint and errors
 -   If the email provided is not valid for example name.outlook.com, instead of name@outlook.com, 
-the API returns
+the API returns:
 ```javascript 
     {error: "invalid email provided"}
 ```
--   If the email and password combination provided is not registered, the error 
+-   If the email and password combination provided is not registered, the following error response will be returned:
 ```javascript
     {error: "incorrect username/password"}
-```
-     will be returned
--   If the email and password combination matches, the session variable isLoggedIn is set to true for 25 minutes and the following response is returned
+``` 
+-   If the email and password combination matches, the session variable isLoggedIn is set to true for 25 minutes and the following response is returned:
 ```javascript
     {status: "success"}
 ```
