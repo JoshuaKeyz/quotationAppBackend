@@ -17,7 +17,7 @@ To Install this program:
 1.  Clone this repository (git  clone   git@github.com:JoshuaKeyz/updatedVersion.git     jobtest)
 2.  Enter the directory of the application (cd jobtest)
 3.  Run the command to initialize Docker (docker-compose build)
-4.  Deploy the Application by running these commands (docker-compose up)
+4.  Deploy the Application by running this command docker-compose up)
 
 ## Test the REST API
 To run the test of the features of the application (after installation), open a terminal and enter the following command:

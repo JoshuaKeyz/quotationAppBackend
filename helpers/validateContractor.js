@@ -8,8 +8,6 @@ module.exports = function(_id){
 				new Contractor({id: _id})
 					.fetch()
 					.then(function(model){
-						console.log("Hello");
-						console.log(model.toJSON());
 						return true;
 					});
 			}else{

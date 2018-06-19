@@ -1,5 +1,3 @@
-let Contractor = require("../models/Contractor");
-let Consumer = require("../models/Consumer");
 let Quotes = require("../models/Quotes");
 let coordist = require("coordist");
 let checkLogin = require("../helpers/checkLogin");
@@ -24,9 +22,9 @@ module.exports = function(req, res){
 						contractor_email: obj.contractor_id.email,
 						distance_from_contractor: distance,
 						labor: obj.labor,
-				    expenses: obj.expenses,
-				    sales_task: obj.sales_task,
-				    miscellaneous: obj.miscellaneous,
+						expenses: obj.expenses,
+						sales_task: obj.sales_task,
+						miscellaneous: obj.miscellaneous,
 						total: obj.total,
 						status: obj.status
 					});

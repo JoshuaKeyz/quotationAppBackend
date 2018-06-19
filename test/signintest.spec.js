@@ -67,8 +67,8 @@ describe("Contractor sign in", ()=>{
 				res.should.be.json;
 				res.body.should.have.property("status");
 				res.body.status.should.equal("success");
-				res.body.should.have.property("contractor_id")
-				res.body.contractor_id.should.equal(1)
+				res.body.should.have.property("contractor_id");
+				res.body.contractor_id.should.equal(1);
 				done();
 			});
 	});
@@ -133,7 +133,7 @@ describe("Consumer sign in", ()=>{
 				res.should.be.json;
 				res.body.should.have.property("status");
 				res.body.status.should.equal("success");
-				res.body.should.have.property("consumer_id")
+				res.body.should.have.property("consumer_id");
 				done();
 			});
 	});

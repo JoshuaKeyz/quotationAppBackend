@@ -59,7 +59,7 @@ describe("Sending quotes", ()=>{
 				expect(res).to.have.cookie("sessionid");
 				res.body.should.have.property("status");
 				res.body.status.should.equal("success");
-				Cookies = res.headers["set-cookie"];//.pop().split(';')[0]
+				let Cookies = res.headers["set-cookie"];//.pop().split(';')[0]
 				return chai.request(server)
 					.post("/contractors/sendquotes")
 					.set("Cookie", Cookies)
@@ -95,7 +95,7 @@ describe("Sending quotes", ()=>{
 				expect(res).to.have.cookie("sessionid");
 				res.body.should.have.property("status");
 				res.body.status.should.equal("success");
-				Cookies = res.headers["set-cookie"];//.pop().split(';')[0]
+				let Cookies = res.headers["set-cookie"];//.pop().split(';')[0]
 				return chai.request(server)
 					.post("/contractors/sendquotes")
 					.set("Cookie", Cookies)
@@ -113,9 +113,9 @@ describe("Sending quotes", ()=>{
 				
 					.then(function(res){
 						res.body.should.have.property("error");
-						res.body.error.should.equal('invalid quotation');
+						res.body.error.should.equal("invalid quotation");
 						done();
 					});
 			});
-	})
+	});
 });
