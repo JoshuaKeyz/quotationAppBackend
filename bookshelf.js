@@ -8,15 +8,15 @@
   }
 });*/
 let pg;
-var knexfile = require("./knexfile");
-if(process.env.NODE_ENV == "test"){
-	pg = require("knex")({client: "pg", connection: knexfile["test"].connection});
+var knexfile = require('./knexfile');
+if(process.env.NODE_ENV == 'test'){
+	pg = require('knex')({client: 'pg', connection: knexfile['test'].connection});
 }else{
-	pg = require("knex")({client: "pg", connection: knexfile["development"].connection});
+	pg = require('knex')({client: 'pg', connection: knexfile['development'].connection});
 }
 
 
-const bookshelf = require("bookshelf")(pg);
-bookshelf.plugin("registry");
+const bookshelf = require('bookshelf')(pg);
+bookshelf.plugin('registry');
 
 module.exports = bookshelf;

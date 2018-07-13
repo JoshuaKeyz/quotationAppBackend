@@ -1,12 +1,12 @@
-const bookshelf = require("../bookshelf");
+const bookshelf = require('../bookshelf');
 
 var Quote = bookshelf.Model.extend({
-	tableName: "quotes",
+	tableName: 'quotes',
 	consumer_id: function(){
-		return this.belongsTo(require("./Consumer"));
+		return this.belongsTo(require('./Consumer'));
 	},
 	contractor_id: function(){
-		return this.belongsTo(require("./Contractor"));
+		return this.belongsTo(require('./Contractor'));
 	}
 }
 );

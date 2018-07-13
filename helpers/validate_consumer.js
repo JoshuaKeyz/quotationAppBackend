@@ -1,4 +1,4 @@
-let Consumer = require("../models/Consumer");
+let Consumer = require('../models/Consumer');
 
 module.exports = function(id){
 	new Consumer({id: id})

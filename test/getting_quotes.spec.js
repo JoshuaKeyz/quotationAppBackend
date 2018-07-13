@@ -1,15 +1,15 @@
-process.env.NODE_ENV = "test";
+process.env.NODE_ENV = 'test';
 
-const chai = require("chai");
-const chaiHttp = require("chai-http");
-const server = require("../app");
-let should = require("chai").should;
-let expect = require("chai").expect;
-let knex = require("../db/knex");
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../app');
+let should = require('chai').should;
+let expect = require('chai').expect;
+let knex = require('../db/knex');
 chai.use(chaiHttp);
 
 
-describe("Consumers gets quotes", ()=>{
+describe('Consumers gets quotes', ()=>{
 	beforeEach((done)=>{
 		knex.migrate.rollback()
 			.then(function(){
@@ -29,32 +29,32 @@ describe("Consumers gets quotes", ()=>{
 				done();
 			});
 	});
-	it("If the user is not loggedIn, return {error: 'not signedIn'}", (done)=>{
+	it('If the user is not loggedIn, return {error: \'not signedIn\'}', (done)=>{
 		chai.request(server)
-			.get("/consumers/quotes")
+			.get('/consumers/quotes')
 			.end(function(err, res){
-				res.body.should.have.property("error");
-				res.body.error.should.equal("not signedIn");
+				res.body.should.have.property('error');
+				res.body.error.should.equal('not signedIn');
 				done();
 			});
 	});
-	it("if the user is logged in, return {status: 'success'}", (done)=>{
+	it('if the user is logged in, return {status: \'success\'}', (done)=>{
 		let agent = chai.request.agent(server);
-		agent.post("/consumers/signin")
+		agent.post('/consumers/signin')
 			.send({
-				email: "meg.oliver@example.com", 
-				password: "example",
+				email: 'meg.oliver@example.com', 
+				password: 'example',
 			})
 			.then(function(res){
-				expect(res).to.have.cookie("sessionid");
-				let Cookies = res.headers["set-cookie"];
-				return agent.get("/consumers/quotes?consumer_id=1")
-					.set("Cookie", Cookies)
+				expect(res).to.have.cookie('sessionid');
+				let Cookies = res.headers['set-cookie'];
+				return agent.get('/consumers/quotes?consumer_id=1')
+					.set('Cookie', Cookies)
 					.then(function(res){
 						res.should.be.json;
-						res.body[0].should.have.property("id");
-						res.body[0].should.have.property("contractor_email");
-						res.body[0].should.have.property("quote_for");
+						res.body[0].should.have.property('id');
+						res.body[0].should.have.property('contractor_email');
+						res.body[0].should.have.property('quote_for');
 						/*res.body.status.should.equal("success")*/
 						done();
 					});
@@ -62,7 +62,7 @@ describe("Consumers gets quotes", ()=>{
 	});
 });
 
-describe("Contractors gets quotes", ()=>{
+describe('Contractors gets quotes', ()=>{
 	beforeEach((done)=>{
 		knex.migrate.rollback()
 			.then(function(){
@@ -82,32 +82,32 @@ describe("Contractors gets quotes", ()=>{
 				done();
 			});
 	});
-	it("If the user is not loggedIn, return {error: 'not signedIn'}", (done)=>{
+	it('If the user is not loggedIn, return {error: \'not signedIn\'}', (done)=>{
 		chai.request(server)
-			.get("/contractors/quotes")
+			.get('/contractors/quotes')
 			.end(function(err, res){
-				res.body.should.have.property("error");
-				res.body.error.should.equal("not signedIn");
+				res.body.should.have.property('error');
+				res.body.error.should.equal('not signedIn');
 				done();
 			});
 	});
-	it("if the user is logged in, return {status: 'success'}", (done)=>{
+	it('if the user is logged in, return {status: \'success\'}', (done)=>{
 		let agent = chai.request.agent(server);
-		agent.post("/contractors/signin")
+		agent.post('/contractors/signin')
 			.send({
-				email:"liver.johnson@example.com", 
-				password: "example"
+				email:'liver.johnson@example.com', 
+				password: 'example'
 			})
 			.then(function(res){
-				expect(res).to.have.cookie("sessionid");
-				let Cookies = res.headers["set-cookie"];
-				return agent.get("/contractors/quotes?contractor_id=1")
-					.set("Cookie", Cookies)
+				expect(res).to.have.cookie('sessionid');
+				let Cookies = res.headers['set-cookie'];
+				return agent.get('/contractors/quotes?contractor_id=1')
+					.set('Cookie', Cookies)
 					.then(function(res){
 						res.should.be.json;
-						res.body[0].should.have.property("id");
-						res.body[0].should.have.property("contractor_email");
-						res.body[0].should.have.property("quote_for");
+						res.body[0].should.have.property('id');
+						res.body[0].should.have.property('contractor_email');
+						res.body[0].should.have.property('quote_for');
 						/*res.body.status.should.equal("success")*/
 						done();
 					});
