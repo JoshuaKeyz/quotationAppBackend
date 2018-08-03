@@ -23,7 +23,7 @@ reject or accept them. In addition, the contractors can review the already sent 
 
 ## Installation
 To Install this program:
-1.  Clone this repository (git  clone   git@github.com:JoshuaKeyz/updatedVersion.git     jobtest)
+1.  Clone this repository (git  clone   https://github.com/JoshuaKeyz/quotationAppBackend.git    jobtest)
 2.  Enter the directory of the application (cd jobtest)
 3.  Run the command to initialize Docker (docker-compose build)
 4.  Deploy the Application by running this command docker-compose up)
@@ -31,7 +31,7 @@ To Install this program:
 ## Test the REST API
 To run the test of the features of the application (after installation), open a terminal and enter the following command:
 
-**cd jobtest && npm run test**
+**cd jobtest && npm install && npm run test**
 
 ## Checking the ESLINT code output result
 To check the eslint output sinply run the following command in the project documentary
